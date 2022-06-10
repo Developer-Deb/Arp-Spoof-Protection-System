@@ -30,8 +30,6 @@ def sniff(interface): #monitoring network
     scapy.sniff(iface=interface, store=False, prn=process_sniffed_packet)
 
     
-
-
 def process_sniffed_packet(packet): #finding the hack
         
     if packet.haslayer(scapy.ARP) and packet[scapy.ARP].op == 2:
@@ -41,11 +39,7 @@ def process_sniffed_packet(packet): #finding the hack
             #router_ip = packet[scapy.ARP].psrc
             #own_ip = packet[scapy.ARP].pdst
                              
-
-
-
             if(real_mac != response_mac):
-
                 print("\t\t"+"\033[31m" + "[+]System is hacked!!\t\t")
                 print("\033[39m" + "[+]Disconnecting network ")
                 os_name = getting_platform()
